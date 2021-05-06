@@ -1,0 +1,56 @@
+version: '3.4'
+
+services:
+  servicea:
+    image: ozcode/nightschool-service-courses
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - OzCode_Agent_Token=${OzCode_Agent_Token}
+      - OzCode_Agent_ServerAddress=${OzCode_Agent_ServerAddress}
+      - SEQ_SERVER=${SEQ_SERVER}
+    ports:
+      - "5001:80"
+    
+  serviceb:
+    image: ozcode/nightschool-service-rooms
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - OzCode_Agent_Token=${OzCode_Agent_Token}
+      - OzCode_Agent_ServerAddress=${OzCode_Agent_ServerAddress}
+    ports:
+      - "5002:80"
+    
+  serviceauth:
+    image: ozcode/nightschool-service-auth
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - OzCode_Agent_Token=${OzCode_Agent_Token}
+      - OzCode_Agent_ServerAddress=${OzCode_Agent_ServerAddress}
+    ports:
+      - "5003:80"
+
+  serviceui:
+    image: ozcode/nightschool-service-ui
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - OzCode_Agent_Token=${OzCode_Agent_Token}
+      - OzCode_Agent_ServerAddress=${OzCode_Agent_ServerAddress}
+    ports:
+      - "5000:80"
+    
+  servicespa:
+    image: ozcode/nightschool-service-spa
+    ports:
+      - "5080:8080"
+
+  seq:
+    image: datalust/seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5050:80"
+      - "5341:5341"
