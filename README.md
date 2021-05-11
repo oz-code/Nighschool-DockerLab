@@ -6,7 +6,7 @@ a lab to show how to use Ozcode production debugger with Docker
 ### Step 1: clone our docker demo
 ```bash
 git clone https://github.com/oz-code/Nightschool-DockerLab
-cd Nighschool-DockerLab
+cd Nightschool-DockerLab
 ```
 This is a tiny repo that only have a docker-compose that run several micro services written in .Net Core 3.1, and they all have Ozcode Production Debugger agennt installed and ready to go.
 
